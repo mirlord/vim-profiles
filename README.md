@@ -24,35 +24,35 @@ your profiles. On how to do it - see "Usage" section below.
    files are located in another directory - you definitely should know how to
    correctly interpret the defaults I use here). Example:
 
-    $ ls ~/.vim/profiles
-    base
-    development
-    lib
+        $ ls ~/.vim/profiles
+        base
+        development
+        lib
 
 2. Move your bundles to the appropriate profile directories (see FAQ section if
    you have trouble with relocating bundles as git submodules). Let's imagine the
    following result:
 
-    $ ls ~/.vim/profiles/lib
-    genutils
-    $ ls ~/.vim/profiles/base
-    localvimrc
-    airline
-    $ ls ~/.vim/profiles/development
-    ctrlp
-    syntastic
-    ultisnips
+        $ ls ~/.vim/profiles/lib
+        genutils
+        $ ls ~/.vim/profiles/base
+        localvimrc
+        airline
+        $ ls ~/.vim/profiles/development
+        ctrlp
+        syntastic
+        ultisnips
 
 3. For 80% of our vim usage we need only a good colorscheme and a nice
    statusbar. So we decide to always load `lib` and `base` profiles on startup.
    To acieve this we should define the confguration variable:
 
-    let g:profiles_default = ['lib', 'base']
+        let g:profiles_default = ['lib', 'base']
 
    or you can do the same by setting the environment variable `$VIM_PROFILES`. It
    should contain just profiles names separated by space, i.e.:
 
-    alias vim='env VIM_PROFILES="lib base" vim'
+        alias vim='env VIM_PROFILES="lib base" vim'
 
    Note, that it's a very good idea to include
    [localvimrc](https://github.com/embear/vim-localvimrc/) to one of your default
@@ -61,11 +61,11 @@ your profiles. On how to do it - see "Usage" section below.
 4. Sure, vim now starts 100500 times faster without those development plugins.
    But what if we need them? Just type the following command:
 
-    :LoadProfiles development
+        :LoadProfiles development
 
    or as a shortcut:
 
-    :LP development
+        :LP development
 
    and go working hard to start a Rise of Machines.
 

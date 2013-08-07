@@ -100,6 +100,17 @@ function! s:do_load(...)
   endfor
 endfunction
 
+"" Custom replacement of pathogen's infect
+""
+function s:infect(p_path)
+  " the easiest way to check if profiles location is absolute
+  if (isdirectory(g:profiles_path))
+    return pathogen#surround(a:p_path)
+  else
+    return pathogen#incubate(a:p_path)
+  endif
+endfunction
+
 "" Preload profile on vim startup.
 ""
 "" This will NOT try to activate loaded bundles.
@@ -109,7 +120,7 @@ function! s:do_preload(p_name)
   let l:activations = {'before' : [], 'after' : []}
   if (index(g:profiles_loaded, a:p_name) < 0)
     let l:p_path = g:profiles_path . l:sep . a:p_name . l:sep . '{}'
-    let l:activations = pathogen#infect(l:p_path)
+    let l:activations = s:infect(l:p_path)
     let g:profiles_loaded = add(g:profiles_loaded, a:p_name)
     execute 'let g:profiles_loaded#' . a:p_name . ' = 1'
   endif

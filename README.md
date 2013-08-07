@@ -15,6 +15,10 @@ Then you just have to add the following into your `vimrc`:
 
     exec profiles#init()
 
+Also you need to install pathogen. Unfortunately, vim-profiles requires to use
+a forked version from the `develop` branch of this github repo:
+[mirlord/vim-pathogen](https://github.com/mirlord/vim-pathogen).
+
 But to be honest, you'll get nothing amazing until you organize and configure
 your profiles. On how to do it - see "Usage" section below.
 
